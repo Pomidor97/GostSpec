@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>GOSTSpec</Name>
+    <Description>Плагин для копирования параметров и автоспецификации</Description>
+    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
+    
+    <FullClassName>GOSTSpec.App.App</FullClassName>
+    
+    <VendorId>KAZGOR</VendorId>
+    <VendorDescription>АО Казгор</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Name>GOSTSpec - Копирование параметров</Name>
+    <Description>Команда для копирования значений параметров</Description>
+    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.Command</FullClassName>
+    <VendorId>KAZGOR</VendorId>
+    <VendorDescription>АО Казгор</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Name>GOSTSpec - Автонумерация</Name>
+    <Description>Команда для автоматической нумерации позиций</Description>
+    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.Numbering</FullClassName>
+    <VendorId>KAZGOR</VendorId>
+    <VendorDescription>АО Казгор</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Name>GOSTSpec - Автоспецификация</Name>
+    <Description>Команда для автоматического создания спецификаций</Description>
+    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.AutoSchedule</FullClassName>
+    <VendorId>KAZGOR</VendorId>
+    <VendorDescription>АО Казгор</VendorDescription>
+  </AddIn>
+</RevitAddIns>
