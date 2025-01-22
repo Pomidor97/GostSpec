@@ -14,33 +14,30 @@ namespace GostSpec.Commands
 
         public AutoSchedulingCommand(IScheduleGenerator scheduleGenerator)
         {
-            
+            _scheduleGenerator = scheduleGenerator;
         }
 
-        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elementSet)
+        public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            var elements = new FilteredElementCollector(doc)
+            var elementsWithSystems = new FilteredElementCollector(doc)
                 .WhereElementIsNotElementType()
                 .Where(e => e.LookupParameter("С_Система") != null)
                 .ToList();
 
-            var systemNames = new HashSet<string>();
-            foreach (var el in elements)
-            {
-                string sys = el.LookupParameter("С_Система").AsString();
-                if (!string.IsNullOrEmpty(sys))
-                    systemNames.Add(sys.Trim());
-            }
+            var systemNames = elementsWithSystems
+                .Select(e => e.LookupParameter("С_Система").AsString())
+                .Where(name => !string.IsNullOrEmpty(name))
+                .Distinct();
 
-            using (Transaction tx = new Transaction(doc, "Auto Schedules"))
+            using (Transaction tx = new Transaction(doc, "Auto Scheduling"))
             {
                 tx.Start();
 
                 foreach (var systemName in systemNames)
                 {
-                    ViewSchedule schedule = _scheduleGenerator.CreateScheduleForSystem(doc, systemName);
+                    var schedule = _scheduleGenerator.CreateScheduleForSystem(doc, systemName);
                     if (schedule != null)
                     {
                         _scheduleGenerator.ConfigureScheduleFilters(schedule, systemName);

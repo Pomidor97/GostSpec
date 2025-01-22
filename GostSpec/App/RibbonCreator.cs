@@ -16,47 +16,30 @@ namespace GostSpec.App
             {
                 application.CreateRibbonTab(tabName);
             }
-            catch (Exception)
+            catch
             {
+                // Игнорируем исключение, если вкладка уже существует.
             }
 
             var panel = application.GetRibbonPanels(tabName)
-                .FirstOrDefault(p => p.Name == "Оформление");
-
-            if (panel == null)
-                panel = application.CreateRibbonPanel(tabName, "Оформление");
+                            .FirstOrDefault(p => p.Name == "Оформление") 
+                        ?? application.CreateRibbonPanel(tabName, "Оформление");
 
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
 
-            PushButtonData copyParamsButton = new PushButtonData(
-                "copyParameterValues_btn",
-                "Копирование\nзначений",
-                assemblyPath,
-                "icons8_copy_32.png"
-            );
+            // Добавление кнопок.
+            AddPushButton(panel, "copyParameterValues_btn", "Копирование\nзначений", assemblyPath, "icons8_copy_32.png", "Копирование значений параметров");
+            AddPushButton(panel, "autoNumbering_btn", "Автонумерация", assemblyPath, "icons8_counter_32.png", "Автонумерация позиций");
+            AddPushButton(panel, "autoScheduling_btn", "Авто\nспецификация", assemblyPath, "icons8_schedule_32.png", "Авто-генерация спецификаций по системам");
+        }
 
-            PushButtonData autoNumButton = new PushButtonData(
-                "autoNumbering_btn",
-                "Автонумерация",
-                assemblyPath,
-                "icons8_counter_32.png"
-            );
-
-            PushButtonData autoSchedButton = new PushButtonData(
-                "autoScheduling_btn",
-                "Авто\nспецификация",
-                assemblyPath,
-                "icons8_schedule_32.png"
-            );
-
-            var copyBtn = panel.AddItem(copyParamsButton) as PushButton;
-            var numBtn = panel.AddItem(autoNumButton) as PushButton;
-            var schedBtn = panel.AddItem(autoSchedButton) as PushButton;
-
-            copyBtn.ToolTip = "Копирование значений параметров";
-            numBtn.ToolTip = "Автонумерация позиций";
-            schedBtn.ToolTip = "Авто-генерация спецификаций по системам";
-
+        private static void AddPushButton(RibbonPanel panel, string name, string text, string assemblyPath, string className, string tooltip)
+        {
+            var buttonData = new PushButtonData(name, text, assemblyPath, className)
+            {
+                ToolTip = tooltip
+            };
+            panel.AddItem(buttonData);
         }
     }
 }

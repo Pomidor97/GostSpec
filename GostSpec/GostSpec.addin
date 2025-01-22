@@ -2,38 +2,40 @@
 <RevitAddIns>
   <AddIn Type="Application">
     <Name>GOSTSpec</Name>
-    <Description>Плагин для копирования параметров и автоспецификации</Description>
-    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
-    
+    <AddInId>123e4567-e89b-12d3-a456-426614174001</AddInId>
+    <Description>Плагин для работы с параметрами и спецификациями</Description>
+    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
     <FullClassName>GOSTSpec.App.App</FullClassName>
-    
     <VendorId>KAZGOR</VendorId>
     <VendorDescription>АО Казгор</VendorDescription>
   </AddIn>
 
   <AddIn Type="Command">
-    <Name>GOSTSpec - Копирование параметров</Name>
-    <Description>Команда для копирования значений параметров</Description>
-    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.Command</FullClassName>
+    <Name>Копирование параметров</Name>
+    <AddInId>123e4567-e89b-12d3-a456-426614174002</AddInId>
+    <Description>Копирование значений параметров между элементами</Description>
+    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.Commands.CopyParameterValuesCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
     <VendorDescription>АО Казгор</VendorDescription>
   </AddIn>
 
   <AddIn Type="Command">
-    <Name>GOSTSpec - Автонумерация</Name>
-    <Description>Команда для автоматической нумерации позиций</Description>
-    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.Numbering</FullClassName>
+    <Name>Автонумерация</Name>
+    <AddInId>123e4567-e89b-12d3-a456-426614174003</AddInId>
+    <Description>Автоматическая нумерация позиций</Description>
+    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.Commands.AutoNumberingCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
     <VendorDescription>АО Казгор</VendorDescription>
   </AddIn>
 
   <AddIn Type="Command">
-    <Name>GOSTSpec - Автоспецификация</Name>
-    <Description>Команда для автоматического создания спецификаций</Description>
-    <Assembly>D:\Path\To\Your\Plugin\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.AutoSchedule</FullClassName>
+    <Name>Автоспецификация</Name>
+    <AddInId>123e4567-e89b-12d3-a456-426614174004</AddInId>
+    <Description>Автоматическое создание спецификаций</Description>
+    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
+    <FullClassName>GOSTSpec.Commands.AutoSchedulingCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
     <VendorDescription>АО Казгор</VendorDescription>
   </AddIn>

@@ -3,6 +3,7 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
 using GostSpec.Interfaces;
 using System.Collections.Generic;
+using GostSpec.Utils;
 
 namespace GostSpec.Commands
 {
@@ -11,7 +12,6 @@ namespace GostSpec.Commands
     {
         private readonly IElementProcessor _elementProcessor;
 
-        // Вариант внедрения через DI (или получаем через ServiceLocator):
         public CopyParameterValuesCommand(IElementProcessor elementProcessor)
         {
             _elementProcessor = elementProcessor;
@@ -19,24 +19,22 @@ namespace GostSpec.Commands
 
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            UIApplication uiapp = commandData.Application;
-            Document doc = uiapp.ActiveUIDocument.Document;
+            Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            List<BuiltInCategory> categories = new List<BuiltInCategory>()
+            List<BuiltInCategory> categories = new List<BuiltInCategory>
             {
                 BuiltInCategory.OST_PipeFitting,
-                BuiltInCategory.OST_DuctFitting
+                BuiltInCategory.OST_DuctFitting,
+                BuiltInCategory.OST_PipeInsulations
             };
 
             var allElements = new List<Element>();
-            foreach (var cat in categories)
+            foreach (var category in categories)
             {
-                var collector = new FilteredElementCollector(doc).OfCategory(cat).WhereElementIsNotElementType();
-                allElements.AddRange(collector);
+                allElements.AddRange(ElementUtils.GetElementsByCategory(doc, category));
             }
 
             _elementProcessor.ProcessElements(doc, allElements);
-
             return Result.Succeeded;
         }
     }

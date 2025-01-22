@@ -14,10 +14,30 @@ namespace GostSpec.Utils
 
         public static IEnumerable<Element> GetElementsByCatIdValue(Document doc, int catIdValue)
         {
-            BuiltInCategory bic = (BuiltInCategory)catIdValue;
-            return new FilteredElementCollector(doc)
-                .OfCategory(bic)
-                .WhereElementIsNotElementType();
+            if (doc == null) return new List<Element>();
+
+            try
+            {
+                BuiltInCategory bic = (BuiltInCategory)catIdValue;
+                return new FilteredElementCollector(doc)
+                    .OfCategory(bic)
+                    .WhereElementIsNotElementType();
+            }
+            catch
+            {
+                // Возвращаем пустой список в случае ошибки.
+                return new List<Element>();
+            }
+        }
+        
+        public static IEnumerable<Element> GetElementsByMultipleCategories(Document doc, IEnumerable<BuiltInCategory> categories)
+        {
+            var collector = new FilteredElementCollector(doc).WhereElementIsNotElementType();
+            foreach (var category in categories)
+            {
+                collector = collector.OfCategory(category);
+            }
+            return collector;
         }
     }
 }

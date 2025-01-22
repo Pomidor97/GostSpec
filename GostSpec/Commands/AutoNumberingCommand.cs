@@ -1,6 +1,7 @@
 ﻿using Autodesk.Revit.UI;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.Attributes;
+using GostSpec.Utils;
 
 namespace GostSpec.Commands
 {
@@ -11,13 +12,30 @@ namespace GostSpec.Commands
         {
             Document doc = commandData.Application.ActiveUIDocument.Document;
 
-            if (doc.ActiveView.ViewType == ViewType.Schedule)
+            if (doc.ActiveView is ViewSchedule schedule)
             {
-                var schedule = doc.ActiveView as ViewSchedule;
+                int index = 1;
+
+                using (Transaction tx = new Transaction(doc, "Auto Numbering"))
+                {
+                    tx.Start();
+
+                    foreach (var element in new FilteredElementCollector(doc, schedule.Id))
+                    {
+                        Parameter param = element.LookupParameter("Номер");
+                        if (param != null && !param.IsReadOnly)
+                        {
+                            param.Set(index.ToString());
+                            index++;
+                        }
+                    }
+
+                    tx.Commit();
+                }
             }
             else
             {
-                TaskDialog.Show("Предупреждение", "Нужно открыть спецификацию для автонумерации");
+                TaskDialogUtils.ShowWarning("Нужно открыть спецификацию для автонумерации.");
             }
 
             return Result.Succeeded;

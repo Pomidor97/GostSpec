@@ -2,6 +2,7 @@
 using Autodesk.Revit.DB;
 using GostSpec.Interfaces;
 using GostSpec.Models;
+using GostSpec.Utils;
 
 namespace GostSpec.Services
 {
@@ -26,7 +27,14 @@ namespace GostSpec.Services
                 {
                     foreach (var mapping in _parameterMappings)
                     {
-                        CopyParameters(element, mapping);
+                        try
+                        {
+                            CopyParameters(element, mapping);
+                        }
+                        catch (System.Exception ex)
+                        {
+                            TaskDialogUtils.ShowWarning($"Ошибка при обработке элемента {element.Id}: {ex.Message}");
+                        }
                     }
                 }
 

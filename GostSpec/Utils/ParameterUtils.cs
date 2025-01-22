@@ -6,15 +6,16 @@ namespace GostSpec.Utils
     {
         public static Parameter GetParameter(Element element, string paramName)
         {
-            if (element == null) return null;
+            if (element == null || string.IsNullOrWhiteSpace(paramName))
+                return null;
+
             return element.LookupParameter(paramName);
         }
 
-        public static double GetDoubleValueInMM(Parameter parameter)
+        public static double GetDoubleValueInUnits(Parameter parameter, ForgeTypeId unitType)
         {
             if (parameter == null) return 0;
-            double val = parameter.AsDouble();
-            return UnitUtils.ConvertFromInternalUnits(val, UnitTypeId.Millimeters);
+            return UnitUtils.ConvertFromInternalUnits(parameter.AsDouble(), unitType);
         }
     }
 }
