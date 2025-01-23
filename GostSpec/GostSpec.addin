@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RevitAddIns>
-  <AddIn Type="Application">
-    <Name>GOSTSpec</Name>
-    <AddInId>123e4567-e89b-12d3-a456-426614174001</AddInId>
-    <Description>Плагин для работы с параметрами и спецификациями</Description>
-    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.App.App</FullClassName>
-    <VendorId>KAZGOR</VendorId>
-    <VendorDescription>АО Казгор</VendorDescription>
-  </AddIn>
-
   <AddIn Type="Command">
     <Name>Копирование параметров</Name>
     <AddInId>123e4567-e89b-12d3-a456-426614174002</AddInId>
     <Description>Копирование значений параметров между элементами</Description>
-    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.Commands.CopyParameterValuesCommand</FullClassName>
+    <Assembly>C:\Users\zhassulan.suleiman\AppData\Roaming\Autodesk\Revit\Addins\2023\GOSTSpec.dll</Assembly>
+    <FullClassName>GostSpec.Commands.CopyParameterValuesCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
-    <VendorDescription>АО Казгор</VendorDescription>
+    <VendorDescription>Zhassulan Suleiman</VendorDescription>
   </AddIn>
 
   <AddIn Type="Command">
     <Name>Автонумерация</Name>
     <AddInId>123e4567-e89b-12d3-a456-426614174003</AddInId>
     <Description>Автоматическая нумерация позиций</Description>
-    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.Commands.AutoNumberingCommand</FullClassName>
+    <Assembly>C:\Users\zhassulan.suleiman\AppData\Roaming\Autodesk\Revit\Addins\2023\GOSTSpec.dll</Assembly>
+    <FullClassName>GostSpec.Commands.AutoNumberingCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
-    <VendorDescription>АО Казгор</VendorDescription>
+    <VendorDescription>Zhassulan Suleiman</VendorDescription>
   </AddIn>
 
   <AddIn Type="Command">
     <Name>Автоспецификация</Name>
     <AddInId>123e4567-e89b-12d3-a456-426614174004</AddInId>
     <Description>Автоматическое создание спецификаций</Description>
-    <Assembly>C:\Users\zhassulan.suleiman\Desktop\All_Plugins\GostSpec\GostSpec\bin\Debug\GOSTSpec.dll</Assembly>
-    <FullClassName>GOSTSpec.Commands.AutoSchedulingCommand</FullClassName>
+    <Assembly>C:\Users\zhassulan.suleiman\AppData\Roaming\Autodesk\Revit\Addins\2023\GOSTSpec.dll</Assembly>
+    <FullClassName>GostSpec.Commands.AutoSchedulingCommand</FullClassName>
     <VendorId>KAZGOR</VendorId>
-    <VendorDescription>АО Казгор</VendorDescription>
+    <VendorDescription>Zhassulan Suleiman</VendorDescription>
   </AddIn>
+  
+  <AddIn Type="Application">
+      <Name>GOSTSpec</Name>
+      <AddInId>123e4567-e89b-12d3-a456-426614174001</AddInId>
+      <Description>Плагин для работы с параметрами и спецификациями</Description>
+      <Assembly>C:\Users\zhassulan.suleiman\AppData\Roaming\Autodesk\Revit\Addins\2023\GOSTSpec.dll</Assembly>
+      <FullClassName>GostSpec.App.App</FullClassName>
+      <VendorId>KAZGOR</VendorId>
+      <VendorDescription>Zhassulan Suleiman</VendorDescription>
+    </AddIn>
 </RevitAddIns>

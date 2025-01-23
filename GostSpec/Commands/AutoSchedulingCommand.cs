@@ -12,6 +12,11 @@ namespace GostSpec.Commands
     {
         private readonly IScheduleGenerator _scheduleGenerator;
 
+        public AutoSchedulingCommand()
+        {
+            _scheduleGenerator = new DefaultScheduleGenerator();
+        }
+
         public AutoSchedulingCommand(IScheduleGenerator scheduleGenerator)
         {
             _scheduleGenerator = scheduleGenerator;
@@ -50,4 +55,5 @@ namespace GostSpec.Commands
             return Result.Succeeded;
         }
     }
+
 }

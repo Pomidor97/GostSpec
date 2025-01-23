@@ -4,7 +4,7 @@ namespace GostSpec.Utils
 {
     public static class ParameterUtils
     {
-        public static Parameter GetParameter(Element element, string paramName)
+        public static Parameter GetParam(Element element, string paramName)
         {
             if (element == null || string.IsNullOrWhiteSpace(paramName))
                 return null;

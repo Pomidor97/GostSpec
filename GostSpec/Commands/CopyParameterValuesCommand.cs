@@ -11,6 +11,11 @@ namespace GostSpec.Commands
     public class CopyParameterValuesCommand : IExternalCommand
     {
         private readonly IElementProcessor _elementProcessor;
+        
+        public CopyParameterValuesCommand()
+        {
+            _elementProcessor = new DefaultElementProcessor();
+        }
 
         public CopyParameterValuesCommand(IElementProcessor elementProcessor)
         {
@@ -23,9 +28,21 @@ namespace GostSpec.Commands
 
             List<BuiltInCategory> categories = new List<BuiltInCategory>
             {
-                BuiltInCategory.OST_PipeFitting,
-                BuiltInCategory.OST_DuctFitting,
-                BuiltInCategory.OST_PipeInsulations
+                BuiltInCategory.OST_DuctCurves,               // Воздуховоды
+                BuiltInCategory.OST_DuctFitting,              // Фитинги для воздуховодов
+                BuiltInCategory.OST_DuctAccessory,            // Аксессуары для воздуховодов
+                BuiltInCategory.OST_DuctSystem,               // Системы воздуховодов
+                BuiltInCategory.OST_DuctInsulations,          // Изоляция воздуховодов    
+                BuiltInCategory.OST_MechanicalEquipment,      // Механическое оборудование
+                
+                BuiltInCategory.OST_PipeCurves,            // Трубы
+                BuiltInCategory.OST_PipeFitting,           // Фитинги для труб
+                BuiltInCategory.OST_PipeAccessory,         // Аксессуары для труб
+                BuiltInCategory.OST_PipingSystem,          // Системы трубопроводов
+                BuiltInCategory.OST_PipeInsulations,       // Изоляция труб
+                BuiltInCategory.OST_Sprinklers,            // Спринклеры
+                BuiltInCategory.OST_PlumbingFixtures,      // Сантехнические приборы
+
             };
 
             var allElements = new List<Element>();
